@@ -15,7 +15,7 @@ export async function signUpUser(email, password) {
 }
 
 export async function signInUser(email, password) {
-    const response = await client.auth.signInUser(email, password);
+    const response = await client.auth.signIn(email, password);
     return response.user;
 }
 
@@ -24,7 +24,8 @@ export async function checkAuth() {
 }
 
 export async function redirectIfLoggedIn() {
-    if (await getUser()) {
+    const user = getUser();
+    if (user) {
         location.replace('./other-page');
     }
 }
