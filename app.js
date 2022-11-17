@@ -10,18 +10,15 @@ const signUpEmail = document.getElementById('sign-up-email');
 const signUpPassword = document.getElementById('sign-up-password');
 
 // Wire up sign in and sign up forms to supabase
-redirectIfLoggedIn();
 signUpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(signUpForm);
     const user = await signUpUser(data.get('email'), data.get('password'));
-
     if (user) {
-        redirectIfLoggedIn();
-    } else {
-        console.error(user);
+        location.replace('/other-page');
     }
 });
+// redirectIfLoggedIn();
 
 signInForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -29,10 +26,7 @@ signInForm.addEventListener('submit', async (event) => {
     const email = data.get('email');
     const password = data.get('password');
     const user = await signInUser(email, password);
-
     if (user) {
-        redirectIfLoggedIn();
-    } else {
-        console.error(user);
+        location.replace('/other-page');
     }
 });

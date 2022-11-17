@@ -10,17 +10,17 @@ export async function getUser() {
 }
 
 export async function signUpUser(email, password) {
-    const response = await client.auth.signUp(email, password);
+    const response = await client.auth.signUp({ email, password });
     return response.user;
 }
 
 export async function signInUser(email, password) {
-    const response = await client.auth.signIn(email, password);
+    const response = await client.auth.signIn({ email, password });
     return response.user;
 }
 
 export async function checkAuth() {
-    const user = await getUser();
+    // const user = await getUser();
 }
 
 export async function redirectIfLoggedIn() {
@@ -32,5 +32,5 @@ export async function redirectIfLoggedIn() {
 
 export async function logout() {
     await client.auth.signOut();
-    return (window.location.href = '../');
+    return (window.location.href = '/');
 }

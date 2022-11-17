@@ -4,8 +4,8 @@ checkAuth();
 
 const logoutButton = document.getElementById('logout');
 
-logoutButton.addEventListener('click', () => {
-    logout();
+logoutButton.addEventListener('click', async () => {
+    await logout();
 });
 
 // use checkAuth function to redirect is user not authenticated
